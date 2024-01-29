@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Appodeal CMP Unity Plugin Documentation
+    url: https://docs.appodeal.com/unity/data-protection/gdpr-and-ccpa
+    about: The place to get started with Appodeal CMP Unity Plugin.

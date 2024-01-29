@@ -1,0 +1,31 @@
+{
+  "name": "com.appodeal.cmp",
+  "version": "2.0.0",
+  "displayName": "Appodeal CMP",
+  "description": "A Consent Management Platform (CMP) is a software that develops notices to inform users and capture their preferences with respect to the processing of their personal data.",
+  "unity": "2020.3",
+  "documentationUrl": "https://docs.appodeal.com/unity/data-protection/gdpr-and-ccpa",
+  "dependencies": {
+    "com.appodeal.mediation": "3.2.1"
+  },
+  "keywords": [
+    "CMP",
+    "GDPR",
+    "Consent",
+    "ConsentManager",
+    "Appodeal"
+  ],
+  "samples": [
+    {
+      "displayName": "Usage Sample",
+      "description": "Appodeal Consent Manager Usage Sample with a Demo Scene and C# Implementation",
+      "path": "Samples~/UsageSample"
+    }
+  ],
+  "author":
+  {
+    "name": "Appodeal Stack",
+    "email": "hi@appodeal.com",
+    "url": "https://appodeal.com"
+  }
+}

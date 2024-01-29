@@ -1,0 +1,16 @@
+{
+    "name": "AppodealStack.Cmp",
+    "rootNamespace": "AppodealStack.Cmp",
+    "references": [
+        "GUID:d5169482dbed401fb4325c92987f5f02"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
