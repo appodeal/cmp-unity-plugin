@@ -2,7 +2,7 @@
     "name": "AppodealStack.Cmp",
     "rootNamespace": "AppodealStack.Cmp",
     "references": [
-        "GUID:d5169482dbed401fb4325c92987f5f02"
+        "GUID:d3f98ce9158344453bb978b5385f4f36"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
