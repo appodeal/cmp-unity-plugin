@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### v2.0.1 (September 20, 2025)
+
++ Recreated `.meta` files
++ Updated usage sample
+
 ### v2.0.0 (January 31, 2024)
 
 + Prepared package for UPM distribution
