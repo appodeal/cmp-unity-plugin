@@ -9,7 +9,7 @@ namespace AppodealStack.Cmp
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class ConsentManager
     {
-        private const string Version = "2.0.0";
+        private const string Version = "2.0.2";
 
         private static readonly Lazy<IConsentManager> Lazy = new Lazy<IConsentManager>(() => new ConsentManagerClient());
         public static IConsentManager Instance { get => Lazy.Value; }
