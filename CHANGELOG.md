@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### v2.0.2 (September 20, 2025)
+
++ Added .npmignore to exclude unnecessary files from package content
+
 ### v2.0.1 (September 20, 2025)
 
 + Recreated `.meta` files
