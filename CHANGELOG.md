@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### v2.1.0 (June 23, 2026)
+
++ Added Privacy Options Form support: `ShowPrivacyOptionsForm()` method and `PrivacyOptionsStatus` property
++ Bumped `com.appodeal.mediation` dependency to v4.2.0
+
 ### v2.0.2 (September 20, 2025)
 
 + Added .npmignore to exclude unnecessary files from package content

@@ -103,6 +103,18 @@ namespace AppodealSample
             Debug.Log($"[Appodeal CMP] GetConsentStatus() method called, status: {status}");
         }
 
+        public void GetPrivacyOptionsStatus()
+        {
+            var status = ConsentManager.Instance.PrivacyOptionsStatus;
+            Debug.Log($"[Appodeal CMP] GetPrivacyOptionsStatus() method called, status: {status}");
+        }
+
+        public void ShowPrivacyOptionsForm()
+        {
+            Debug.Log("[Appodeal CMP] ShowPrivacyOptionsForm() method called");
+            ConsentManager.Instance.ShowPrivacyOptionsForm();
+        }
+
         public void LoadConsentForm()
         {
             Debug.Log("[Appodeal CMP] LoadConsentForm() method called");
