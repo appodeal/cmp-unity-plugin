@@ -15,10 +15,12 @@ namespace AppodealStack.Cmp
         event EventHandler<ConsentFormDismissedEventArgs> OnConsentFormDismissed;
 
         ConsentStatus ConsentStatus { get; }
+        PrivacyOptionsStatus PrivacyOptionsStatus { get; }
 
         void Load();
         void LoadAndShowConsentFormIfRequired();
         void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters);
+        void ShowPrivacyOptionsForm();
         void Revoke();
     }
 }

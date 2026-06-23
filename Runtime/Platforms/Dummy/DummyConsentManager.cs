@@ -19,11 +19,15 @@ namespace AppodealStack.Cmp
 
         public ConsentStatus ConsentStatus { get => ConsentStatus.Unknown; }
 
+        public PrivacyOptionsStatus PrivacyOptionsStatus { get => PrivacyOptionsStatus.Unknown; }
+
         public void Load() => DisplayUnsupportedPlatformWarning();
 
         public void LoadAndShowConsentFormIfRequired() => DisplayUnsupportedPlatformWarning();
 
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters) => DisplayUnsupportedPlatformWarning();
+
+        public void ShowPrivacyOptionsForm() => DisplayUnsupportedPlatformWarning();
 
         public void Revoke() => DisplayUnsupportedPlatformWarning();
 

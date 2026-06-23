@@ -72,6 +72,25 @@ namespace AppodealStack.Cmp
             };
         }
 
+        public static PrivacyOptionsStatus GetPrivacyOptionsStatus(AndroidJavaObject status)
+        {
+            if (status == null)
+            {
+                Debug.LogError("[Appodeal CMP] PrivacyOptionsStatus java object can not be null");
+                return PrivacyOptionsStatus.Unknown;
+            }
+
+            string javaStatus = status.Call<string>("getStatusName");
+
+            return javaStatus switch
+            {
+                "UNKNOWN" => PrivacyOptionsStatus.Unknown,
+                "REQUIRED" => PrivacyOptionsStatus.Required,
+                "NOT_REQUIRED" => PrivacyOptionsStatus.NotRequired,
+                _ => throw new ArgumentOutOfRangeException(nameof(javaStatus), javaStatus, "value must be assignable to PrivacyOptionsStatus")
+            };
+        }
+
         public static AndroidJavaObject GetConsentInfoParametersJavaObject(ConsentInfoParameters parameters)
         {
             if (parameters == null || String.IsNullOrEmpty(parameters.AppKey))

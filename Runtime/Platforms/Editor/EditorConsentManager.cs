@@ -28,6 +28,11 @@ namespace AppodealStack.Cmp
             }
         }
 
+        public PrivacyOptionsStatus PrivacyOptionsStatus
+        {
+            get => _isConsentInfoRequested ? PrivacyOptionsStatus.Required : PrivacyOptionsStatus.Unknown;
+        }
+
         public void Load()
         {
             if (!_isConsentInfoRequested) return;
@@ -79,6 +84,36 @@ namespace AppodealStack.Cmp
         {
             _isConsentInfoRequested = true;
             OnConsentInfoUpdateSucceeded?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void ShowPrivacyOptionsForm()
+        {
+            if (ConsentStatus == ConsentStatus.Required)
+            {
+                LoadAndShowConsentFormIfRequired();
+                return;
+            }
+
+            if (PrivacyOptionsStatus != PrivacyOptionsStatus.Required)
+            {
+                OnConsentFormDismissed?.Invoke(this, new ConsentFormDismissedEventArgs(ConsentManagerError.FormPresentationIsNotRequired));
+                return;
+            }
+
+            var consentFormGameObject = GetConsentFormGameObject();
+            if (consentFormGameObject == null)
+            {
+                OnConsentFormDismissed?.Invoke(this, new ConsentFormDismissedEventArgs(ConsentManagerError.InternalError));
+                return;
+            }
+
+            var editorConsentForm = new EditorConsentForm(consentFormGameObject);
+            editorConsentForm.OnConsentFormDismissed += (sender, args) =>
+            {
+                OnConsentFormDismissed?.Invoke(this, args);
+            };
+
+            editorConsentForm.Show();
         }
 
         public void Revoke()

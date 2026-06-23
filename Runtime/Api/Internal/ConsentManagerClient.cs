@@ -16,6 +16,8 @@ namespace AppodealStack.Cmp
 
         public ConsentStatus ConsentStatus { get => _consentManagerImpl?.ConsentStatus ?? ConsentStatus.Unknown; }
 
+        public PrivacyOptionsStatus PrivacyOptionsStatus { get => _consentManagerImpl?.PrivacyOptionsStatus ?? PrivacyOptionsStatus.Unknown; }
+
         internal ConsentManagerClient()
         {
 #if UNITY_EDITOR
@@ -40,6 +42,8 @@ namespace AppodealStack.Cmp
         public void LoadAndShowConsentFormIfRequired() => _consentManagerImpl?.LoadAndShowConsentFormIfRequired();
 
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters) => _consentManagerImpl?.RequestConsentInfoUpdate(consentInfoParameters);
+
+        public void ShowPrivacyOptionsForm() => _consentManagerImpl?.ShowPrivacyOptionsForm();
 
         public void Revoke() => _consentManagerImpl?.Revoke();
     }

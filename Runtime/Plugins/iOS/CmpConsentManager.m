@@ -13,6 +13,14 @@ int CMPUnityPluginConsentManagerGetConsentStatus() {
     return (int)[APDConsentManager.shared status];
 }
 
+int CMPUnityPluginConsentManagerGetPrivacyOptionsStatus() {
+    switch ([APDConsentManager.shared privacyOptionsRequirementStatus]) {
+        case APDPrivacyOptionsStatusRequired:    return 1;
+        case APDPrivacyOptionsStatusNotRequired: return 2;
+        default:                                 return 0;
+    }
+}
+
 void CMPUnityPluginConsentManagerLoad(ConsentFormLoadFailedCallback loadFailedCallback,
                                       ConsentFormLoadSucceededCallback loadSucceededCallback) {
     [APDConsentManager.shared loadWithCompletion:^(APDConsentDialog* dialog, NSError* error) {
@@ -56,6 +64,17 @@ void CMPUnityPluginConsentManagerRequestConsentInfoUpdate(CMPUnityPluginConsentI
         }
 
         if (updateSucceededCallback) updateSucceededCallback();
+    }];
+}
+
+void CMPUnityPluginConsentManagerShowPrivacyOptionsForm(ConsentFormDismissedCallback callback) {
+    [APDConsentManager.shared showPrivacyOptionsFormWithRootViewController:[GetAppController() rootViewController] completion:^(NSError* error) {
+        if (error) {
+            if (callback) callback((int)error.code);
+            return;
+        }
+
+        if (callback) callback(-1);
     }];
 }
 

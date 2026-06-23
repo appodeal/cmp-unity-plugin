@@ -40,6 +40,15 @@ namespace AppodealStack.Cmp
             }
         }
 
+        public PrivacyOptionsStatus PrivacyOptionsStatus
+        {
+            get
+            {
+                var status = _consentManagerJavaClass?.CallStatic<AndroidJavaObject>("getPrivacyOptionsRequirementStatus");
+                return AndroidCmpJavaHelper.GetPrivacyOptionsStatus(status);
+            }
+        }
+
         internal AndroidConsentManager()
         {
             try
@@ -86,6 +95,15 @@ namespace AppodealStack.Cmp
                 "requestConsentInfoUpdate",
                 paramsJavaObject,
                 _consentInfoUpdateListener
+            );
+        }
+
+        public void ShowPrivacyOptionsForm()
+        {
+            _consentManagerJavaClass?.CallStatic(
+                "showPrivacyOptionsForm",
+                _activityJavaObject,
+                _consentFormDismissedListener
             );
         }
 
