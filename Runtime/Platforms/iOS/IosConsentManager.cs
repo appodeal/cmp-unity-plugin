@@ -24,6 +24,8 @@ namespace AppodealStack.Cmp
 
         public ConsentStatus ConsentStatus { get => CmpConsentManagerGetConsentStatus(); }
 
+        public PrivacyOptionsStatus PrivacyOptionsStatus { get => CmpConsentManagerGetPrivacyOptionsStatus(); }
+
         public void Load()
         {
             CmpConsentManagerLoad(ConsentFormLoadFailed, ConsentFormLoadSucceeded);
@@ -49,6 +51,11 @@ namespace AppodealStack.Cmp
             }
         }
 
+        public void ShowPrivacyOptionsForm()
+        {
+            CmpConsentManagerShowPrivacyOptionsForm(ConsentFormDismissed);
+        }
+
         public void Revoke()
         {
             CmpConsentManagerRevoke();
@@ -56,6 +63,9 @@ namespace AppodealStack.Cmp
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerGetConsentStatus")]
         private static extern ConsentStatus CmpConsentManagerGetConsentStatus();
+
+        [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerGetPrivacyOptionsStatus")]
+        private static extern PrivacyOptionsStatus CmpConsentManagerGetPrivacyOptionsStatus();
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerLoad")]
         private static extern void CmpConsentManagerLoad(
@@ -65,6 +75,9 @@ namespace AppodealStack.Cmp
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerLoadAndShowConsentFormIfRequired")]
         private static extern void CmpConsentManagerLoadAndShowConsentFormIfRequired(ConsentFormDismissedCallback onConsentFormDismissed);
+
+        [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerShowPrivacyOptionsForm")]
+        private static extern void CmpConsentManagerShowPrivacyOptionsForm(ConsentFormDismissedCallback onConsentFormDismissed);
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerRequestConsentInfoUpdate")]
         private static extern void CmpConsentManagerRequestConsentInfoUpdate(
