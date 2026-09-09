@@ -3,6 +3,7 @@
 // ReSharper disable CheckNamespace
 
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Diagnostics.CodeAnalysis;
 using AOT;
@@ -34,6 +35,23 @@ namespace AppodealStack.Cmp
         public void LoadAndShowConsentFormIfRequired()
         {
             CmpConsentManagerLoadAndShowConsentFormIfRequired(ConsentFormDismissed);
+        }
+
+        public void SetDebugSettings(ConsentDebugSettings debugSettings)
+        {
+            if (debugSettings == null)
+            {
+                CmpConsentManagerSetDebugSettings(-1, null);
+                return;
+            }
+
+            if (!Enum.IsDefined(typeof(ConsentDebugGeography), debugSettings.Geography))
+            {
+                throw new ArgumentOutOfRangeException(nameof(debugSettings.Geography), debugSettings.Geography, "value must be assignable to ConsentDebugGeography");
+            }
+
+            string testDeviceIds = debugSettings.TestDeviceIds == null ? "" : String.Join(",", debugSettings.TestDeviceIds.Where(id => !String.IsNullOrEmpty(id)));
+            CmpConsentManagerSetDebugSettings((int)debugSettings.Geography, testDeviceIds);
         }
 
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters)
@@ -78,6 +96,9 @@ namespace AppodealStack.Cmp
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerShowPrivacyOptionsForm")]
         private static extern void CmpConsentManagerShowPrivacyOptionsForm(ConsentFormDismissedCallback onConsentFormDismissed);
+
+        [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerSetDebugSettings")]
+        private static extern void CmpConsentManagerSetDebugSettings(int geography, string testDeviceIds);
 
         [DllImport("__Internal", EntryPoint = "CMPUnityPluginConsentManagerRequestConsentInfoUpdate")]
         private static extern void CmpConsentManagerRequestConsentInfoUpdate(
