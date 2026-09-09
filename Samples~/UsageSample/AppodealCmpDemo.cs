@@ -94,6 +94,10 @@ namespace AppodealSample
 
             Debug.Log($"[Appodeal CMP] init params: {parameters.ToJsonString()}");
 
+            var debugSettings = new ConsentDebugSettings { Geography = ConsentDebugGeography.Eea };
+            Debug.Log($"[Appodeal CMP] SetDebugSettings() method called, geography: {debugSettings.Geography}");
+            ConsentManager.Instance.SetDebugSettings(debugSettings);
+
             ConsentManager.Instance.RequestConsentInfoUpdate(parameters);
         }
 
