@@ -1,6 +1,6 @@
 {
   "name": "com.appodeal.cmp",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "displayName": "Appodeal CMP",
   "description": "A Consent Management Platform (CMP) is a software that develops notices to inform users and capture their preferences with respect to the processing of their personal data.",
   "unity": "2021.3",
