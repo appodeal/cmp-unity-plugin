@@ -4,7 +4,8 @@
 
 ### v2.2.0 (TBD)
 
-+ Added debug geography override support: `SetDebugSettings()` method, `ConsentDebugSettings` class and `ConsentDebugGeography` enum. Call it before `RequestConsentInfoUpdate()`; the natives honour it only in a debuggable build on an emulator, simulator or listed test device
++ Added debug geography override support: `SetDebugSettings()` method, `ConsentDebugSettings` class and `ConsentDebugGeography` enum
++ Bumped `com.appodeal.mediation` dependency to v4.4.0
 
 ### v2.1.0 (June 23, 2026)
 

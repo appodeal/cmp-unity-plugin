@@ -6,7 +6,7 @@
   "unity": "2021.3",
   "documentationUrl": "https://docs.appodeal.com/unity/data-protection/gdpr-and-ccpa",
   "dependencies": {
-    "com.appodeal.mediation": "4.2.0"
+    "com.appodeal.mediation": "4.4.0"
   },
   "keywords": [
     "CMP",
