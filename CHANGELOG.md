@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### v2.2.0 (TBD)
+
++ Added debug geography override support: `SetDebugSettings()` method, `ConsentDebugSettings` class and `ConsentDebugGeography` enum. Call it before `RequestConsentInfoUpdate()`; the natives honour it only in a debuggable build on an emulator, simulator or listed test device
+
 ### v2.1.0 (June 23, 2026)
 
 + Added Privacy Options Form support: `ShowPrivacyOptionsForm()` method and `PrivacyOptionsStatus` property
