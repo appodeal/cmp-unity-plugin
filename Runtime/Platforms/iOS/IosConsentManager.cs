@@ -50,7 +50,7 @@ namespace AppodealStack.Cmp
                 throw new ArgumentOutOfRangeException(nameof(debugSettings.Geography), debugSettings.Geography, "value must be assignable to ConsentDebugGeography");
             }
 
-            string testDeviceIds = debugSettings.TestDeviceIds == null ? "" : String.Join(",", debugSettings.TestDeviceIds.Where(id => !String.IsNullOrEmpty(id)));
+            string testDeviceIds = String.Join(",", (debugSettings.TestDeviceIds ?? Enumerable.Empty<string>()).Where(id => !String.IsNullOrEmpty(id)));
             CmpConsentManagerSetDebugSettings((int)debugSettings.Geography, testDeviceIds);
         }
 
