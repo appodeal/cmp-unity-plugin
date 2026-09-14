@@ -47,12 +47,17 @@ void CMPUnityPluginConsentManagerLoadAndShowConsentFormIfRequired(ConsentFormDis
 }
 
 void CMPUnityPluginConsentManagerSetDebugSettings(int geography, const char* testDeviceIds) {
+    if (geography < 0) {
+        APDConsentManager.shared.debugSettings = nil;
+        return;
+    }
+
     APDConsentDebugGeography debugGeography;
     switch (geography) {
         case 0:  debugGeography = APDConsentDebugGeographyEEA; break;
         case 1:  debugGeography = APDConsentDebugGeographyRegulatedUSState; break;
-        case 2:  debugGeography = APDConsentDebugGeographyOther; break;
-        default: APDConsentManager.shared.debugSettings = nil; return;
+        case 2:
+        default: debugGeography = APDConsentDebugGeographyOther; break;
     }
 
     NSString* joinedTestDeviceIds = testDeviceIds ? [NSString stringWithUTF8String:testDeviceIds] : @"";
