@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### v2.2.0 (TBD)
+### v2.2.0 (September 23, 2026)
 
 + Added debug geography override support: `SetDebugSettings()` method, `ConsentDebugSettings` class and `ConsentDebugGeography` enum
 + Bumped `com.appodeal.mediation` dependency to v4.4.0
