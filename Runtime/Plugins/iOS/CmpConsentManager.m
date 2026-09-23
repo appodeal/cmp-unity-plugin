@@ -46,6 +46,25 @@ void CMPUnityPluginConsentManagerLoadAndShowConsentFormIfRequired(ConsentFormDis
     }];
 }
 
+void CMPUnityPluginConsentManagerSetDebugSettings(int geography, const char* testDeviceIds) {
+    if (geography < 0) {
+        APDConsentManager.shared.debugSettings = nil;
+        return;
+    }
+
+    APDConsentDebugGeography debugGeography;
+    switch (geography) {
+        case 0:  debugGeography = APDConsentDebugGeographyEEA; break;
+        case 1:  debugGeography = APDConsentDebugGeographyRegulatedUSState; break;
+        case 2:
+        default: debugGeography = APDConsentDebugGeographyOther; break;
+    }
+
+    NSString* joinedTestDeviceIds = testDeviceIds ? [NSString stringWithUTF8String:testDeviceIds] : @"";
+    NSArray<NSString*>* ids = joinedTestDeviceIds.length > 0 ? [joinedTestDeviceIds componentsSeparatedByString:@","] : @[];
+    APDConsentManager.shared.debugSettings = [[APDConsentDebugSettings alloc] initWithGeography:debugGeography testDeviceIds:ids];
+}
+
 void CMPUnityPluginConsentManagerRequestConsentInfoUpdate(CMPUnityPluginConsentInfoParameters consentInfoParameters,
                                                           ConsentInfoUpdateFailedCallback updateFailedCallback,
                                                           ConsentInfoUpdateSucceededCallback updateSucceededCallback) {

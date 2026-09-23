@@ -80,6 +80,11 @@ namespace AppodealStack.Cmp
             editorConsentForm.Show();
         }
 
+        public void SetDebugSettings(ConsentDebugSettings debugSettings)
+        {
+            Debug.Log("[Appodeal CMP] Debug settings are applied on Android and iOS only, the Editor ignores them");
+        }
+
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters)
         {
             _isConsentInfoRequested = true;

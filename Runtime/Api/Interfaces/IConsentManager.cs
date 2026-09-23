@@ -19,6 +19,7 @@ namespace AppodealStack.Cmp
 
         void Load();
         void LoadAndShowConsentFormIfRequired();
+        void SetDebugSettings(ConsentDebugSettings debugSettings);
         void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters);
         void ShowPrivacyOptionsForm();
         void Revoke();

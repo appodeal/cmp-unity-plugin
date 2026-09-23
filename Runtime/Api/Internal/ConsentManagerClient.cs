@@ -41,6 +41,8 @@ namespace AppodealStack.Cmp
 
         public void LoadAndShowConsentFormIfRequired() => _consentManagerImpl?.LoadAndShowConsentFormIfRequired();
 
+        public void SetDebugSettings(ConsentDebugSettings debugSettings) => _consentManagerImpl?.SetDebugSettings(debugSettings);
+
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters) => _consentManagerImpl?.RequestConsentInfoUpdate(consentInfoParameters);
 
         public void ShowPrivacyOptionsForm() => _consentManagerImpl?.ShowPrivacyOptionsForm();

@@ -86,6 +86,11 @@ namespace AppodealStack.Cmp
             );
         }
 
+        public void SetDebugSettings(ConsentDebugSettings debugSettings)
+        {
+            _consentManagerJavaClass?.CallStatic("setDebugSettings", AndroidCmpJavaHelper.GetConsentDebugSettingsJavaObject(debugSettings));
+        }
+
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters)
         {
             var paramsJavaObject = AndroidCmpJavaHelper.GetConsentInfoParametersJavaObject(consentInfoParameters);

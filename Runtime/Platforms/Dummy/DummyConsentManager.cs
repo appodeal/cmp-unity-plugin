@@ -25,6 +25,8 @@ namespace AppodealStack.Cmp
 
         public void LoadAndShowConsentFormIfRequired() => DisplayUnsupportedPlatformWarning();
 
+        public void SetDebugSettings(ConsentDebugSettings debugSettings) => DisplayUnsupportedPlatformWarning();
+
         public void RequestConsentInfoUpdate(ConsentInfoParameters consentInfoParameters) => DisplayUnsupportedPlatformWarning();
 
         public void ShowPrivacyOptionsForm() => DisplayUnsupportedPlatformWarning();
