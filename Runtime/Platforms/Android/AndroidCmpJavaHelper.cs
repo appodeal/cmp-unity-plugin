@@ -109,6 +109,31 @@ namespace AppodealStack.Cmp
             );
         }
 
+        public static AndroidJavaObject GetConsentDebugSettingsJavaObject(ConsentDebugSettings debugSettings)
+        {
+            if (debugSettings == null) return null;
+
+            var geography = new AndroidJavaClass("com.appodeal.consent.ConsentDebugGeography").GetStatic<AndroidJavaObject>(GetJavaGeographyName(debugSettings.Geography));
+            var testDeviceIds = new AndroidJavaObject("java.util.ArrayList");
+            foreach (string testDeviceId in (debugSettings.TestDeviceIds ?? Enumerable.Empty<string>()).Where(id => !String.IsNullOrEmpty(id)))
+            {
+                testDeviceIds.Call<bool>("add", testDeviceId);
+            }
+
+            return new AndroidJavaObject("com.appodeal.consent.ConsentDebugSettings", geography, testDeviceIds);
+        }
+
+        private static string GetJavaGeographyName(ConsentDebugGeography geography)
+        {
+            return geography switch
+            {
+                ConsentDebugGeography.Eea => "EEA",
+                ConsentDebugGeography.RegulatedUsState => "REGULATED_US_STATE",
+                ConsentDebugGeography.Other => "OTHER",
+                _ => throw new ArgumentOutOfRangeException(nameof(geography), geography, "value must be assignable to ConsentDebugGeography")
+            };
+        }
+
         private static object GetJavaObject(object value)
         {
             return value switch

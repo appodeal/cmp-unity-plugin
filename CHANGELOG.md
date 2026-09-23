@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### v2.2.0 (September 23, 2026)
+
++ Added debug geography override support: `SetDebugSettings()` method, `ConsentDebugSettings` class and `ConsentDebugGeography` enum
++ Bumped `com.appodeal.mediation` dependency to v4.4.0
+
 ### v2.1.0 (June 23, 2026)
 
 + Added Privacy Options Form support: `ShowPrivacyOptionsForm()` method and `PrivacyOptionsStatus` property
